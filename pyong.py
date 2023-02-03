@@ -65,16 +65,16 @@ def ball_restart():
     ball.center = (screen_width/2, screen_height/2)
     
     if current_time - score_time < COUNTDOWN_TIME*(1/3):
-        number = game_font.render('3', True, light_grey)
+        number = game_font.render('3', True, background_color)
     elif current_time - score_time < COUNTDOWN_TIME*(2/3):
-        number = game_font.render('2', True, light_grey)
+        number = game_font.render('2', True, background_color)
     elif current_time - score_time < COUNTDOWN_TIME:
-        number = game_font.render('1', True, light_grey)
+        number = game_font.render('1', True, background_color)
     else:
         number = False
 
     if number:
-        screen.blit(number, (screen_width/2 - 10, screen_height/2 + 20))
+        screen.blit(number, (screen_width/2-9, screen_height/2-12))
   
     if current_time-score_time < COUNTDOWN_TIME:
         ball_speed_x, ball_speed_y = 0, 0
@@ -94,7 +94,7 @@ ball = pygame.Rect(screen_width/2-15, screen_height/2-15, 30, 30)
 player = pygame.Rect(screen_width-20, screen_height/2-70, 10, 140)
 opponent = pygame.Rect(10,  screen_height/2-70, 10, 140)
 
-backgroudn_color = pygame.Color('grey12')
+background_color = pygame.Color('grey12')
 light_grey = (200,200,200)
 
 ball_speed_x = 7 * random.choice((1, -1))
@@ -104,7 +104,7 @@ opponent_speed = 7
 
 player_score = 0
 opponent_score = 0
-game_font = pygame.font.Font("freesansbold.ttf", 32)
+game_font = pygame.font.Font("freesansbold.ttf", 30)
 
 score_time = None
 
@@ -128,13 +128,13 @@ while True:
     player_animation()
     opponent_animation()
 
-    screen.fill((backgroudn_color))
+    screen.fill(background_color)
 
     player_text = game_font.render(f"{player_score}", True, light_grey)
-    screen.blit(player_text, (screen_width/2 + 20, screen_height/2))
+    screen.blit(player_text, (screen_width/2 + 20, screen_height/2-13))
 
     opponent_text = game_font.render(f"{opponent_score}", True, light_grey)
-    screen.blit(opponent_text, (screen_width/2 - 20 - 19 , screen_height/2))
+    screen.blit(opponent_text, (screen_width/2 - 20 - 19 , screen_height/2-13))
 
     pygame.draw.rect(screen, light_grey, player)
     pygame.draw.rect(screen, light_grey, opponent)
