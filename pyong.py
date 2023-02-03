@@ -1,5 +1,7 @@
 import sys, pygame, random
 
+COUNTDOWN_TIME = 1200
+
 def ball_animation():
     global ball_speed_x, ball_speed_y, player_score, opponent_score, score_time
 
@@ -62,11 +64,11 @@ def ball_restart():
     current_time = pygame.time.get_ticks()
     ball.center = (screen_width/2, screen_height/2)
     
-    if current_time - score_time < 400:
+    if current_time - score_time < COUNTDOWN_TIME*(1/3):
         number = game_font.render('3', True, light_grey)
-    elif current_time - score_time < 800:
+    elif current_time - score_time < COUNTDOWN_TIME*(2/3):
         number = game_font.render('2', True, light_grey)
-    elif current_time - score_time < 1200:
+    elif current_time - score_time < COUNTDOWN_TIME:
         number = game_font.render('1', True, light_grey)
     else:
         number = False
@@ -74,7 +76,7 @@ def ball_restart():
     if number:
         screen.blit(number, (screen_width/2 - 10, screen_height/2 + 20))
   
-    if current_time-score_time < 1200:
+    if current_time-score_time < COUNTDOWN_TIME:
         ball_speed_x, ball_speed_y = 0, 0
     else:
         ball_speed_x = 7*random.choice((1, -1))
