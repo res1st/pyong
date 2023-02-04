@@ -162,15 +162,8 @@ pygame.display.set_caption('pyong')
 clock = pygame.time.Clock()
 game_font = pygame.font.Font("freesansbold.ttf", 30)
 
-# ball = pygame.Rect(screen_width/2-15, screen_height/2-15, 30, 30)
-# player = pygame.Rect(screen_width-20, screen_height/2-70, 10, 140)
-# opponent = pygame.Rect(10,  screen_height/2-70, 10, 140)
-
-# global variables
-# background_color = pygame.Color('grey12')
 background_color = pygame.Color('#2F373F')
 accent_color = (27,35,43)
-# light_grey = (200,200,200)
 middle_strip = pygame.Rect(screen_width/2 - 2, 0, 4, screen_height)
 
 # game objects
@@ -186,16 +179,6 @@ ball_sprite = pygame.sprite.GroupSingle()
 ball_sprite.add(ball)
 
 game_manager = GameManager(ball_sprite,paddle_group)
-
-# ball_speed_x = 7 * random.choice((1, -1))
-# ball_speed_y = 7 * random.choice((1, -1))
-# player_speed = 0
-# opponent_speed = 7
-
-# player_score = 0
-# opponent_score = 0
-
-# score_time = None
 
 while True:
     for event in pygame.event.get():
